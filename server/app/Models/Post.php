@@ -8,4 +8,27 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
+
+    protected $table = 'posts';
+    protected $primaryKey = 'id';
+
+    /**
+     * Fillable Elements
+     * @var string[]
+     */
+    protected $fillable = [
+        'title',
+        'username',
+        'content'
+    ];
+
+    /**
+     * Hidden Elements
+     * @var string[]
+     */
+    protected $hidden = [
+      'id'
+    ];
+
+    public $timestamps = true;
 }
