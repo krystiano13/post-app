@@ -1,10 +1,8 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { Providers } from './providers';
 
 const inter = Inter({ subsets: ['latin'] })
-
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
-import Button from '@mui/material/Button';
 
 export const metadata = {
   title: 'Create Next App',
@@ -15,9 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-      <AppRouterCacheProvider>
-        <Button variant="contained">Test</Button>
-      </AppRouterCacheProvider>
+        <Providers>{ children }</Providers>
       </body>
     </html>
   )
