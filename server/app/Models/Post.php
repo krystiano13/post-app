@@ -22,13 +22,5 @@ class Post extends Model
         'content'
     ];
 
-    /**
-     * Hidden Elements
-     * @var string[]
-     */
-    protected $hidden = [
-      'id'
-    ];
-
     public $timestamps = true;
 }

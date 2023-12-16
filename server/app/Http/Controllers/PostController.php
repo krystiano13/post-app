@@ -24,4 +24,31 @@ class PostController extends Controller
            'data' => $data
        ], 200);
     }
+
+    public function create(Request $req) {
+        $validator = Validator::make($req -> all(),[
+            'title' => ['required'],
+            'username' => ['required', 'min:1'],
+            'content' => ['required', 'min:1']
+        ]);
+
+        if($validator -> fails()) {
+            $errors = $validator -> errors();
+            return response([
+                'status' => false,
+                'errors' => $errors
+            ], 403);
+        }
+
+        $newPost = Post::create([
+            'title' => $req -> get("title"),
+            'username' => $req -> get("username"),
+            'content' => $req -> get("content")
+        ]);
+
+        return response([
+            'status' => true,
+            'message' => "Post created successfully"
+        ], 200);
+    }
 }
