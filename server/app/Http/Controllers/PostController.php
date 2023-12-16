@@ -16,18 +16,7 @@ class PostController extends Controller
         ],200);
     }
 
-    public function getOne(Request $request, $id) {
-       $validator = Validator::make($request -> all(),[
-           'id' => "required"
-       ]);
-
-       if($validator -> fails()) {
-           return response([
-               'status' => false,
-               'errors' => $validator -> errors()
-           ],403);
-       }
-
+    public function getOne($id) {
        $data = Post::where('id',$id) -> get();
 
        return response([
