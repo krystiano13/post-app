@@ -25,7 +25,7 @@ class PostController extends Controller
        ], 200);
     }
 
-    public function create(Request $req) {
+    public function store(Request $req) {
         $validator = Validator::make($req -> all(),[
             'title' => ['required'],
             'username' => ['required', 'min:1'],
