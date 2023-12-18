@@ -1,4 +1,5 @@
 import { Button, Input, Heading, Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
+import Link from "next/link";
 
 export function Navbar() {
     return (
@@ -12,17 +13,25 @@ export function Navbar() {
                 <Input name="search" type="text" placeholder="Search ..." />
             </div>
             <div id="buttons" className="h-full w-1/3 justify-end items-center hidden md:flex">
-                <Button colorScheme="blue" className="ml-1 mr-1">Log In</Button>
-                <Button colorScheme="gray" className="ml-1 mr-1">Create Account</Button>
+                <Link href="/login">
+                    <Button colorScheme="blue" className="ml-1 mr-1">Log In</Button>
+                </Link>
+                <Link href="/register">
+                    <Button colorScheme="gray" className="ml-1 mr-1">Create Account</Button>
+                </Link>
             </div>
-            <div className="block md:hidden w-1/4 flex items-center justify-end">
+            <div className="md:hidden w-1/4 flex items-center justify-end">
                 <Menu>
                     <MenuButton as={Button}>
-                       <span className="text-[0.8rem] text-[1rem]">Account</span>
+                       <span className="text-[0.8rem] md:text-[1rem]">Account</span>
                     </MenuButton>
                     <MenuList>
-                        <MenuItem>Log In</MenuItem>
-                        <MenuItem>Create Account</MenuItem>
+                        <Link href="/login">
+                            <MenuItem>Log In</MenuItem>
+                        </Link>
+                        <Link href="/register">
+                            <MenuItem>Create Account</MenuItem>
+                        </Link>
                     </MenuList>
                 </Menu>
             </div>
