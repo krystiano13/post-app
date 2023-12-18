@@ -1,4 +1,5 @@
 import {Button, Input, FormLabel, Card} from "@chakra-ui/react";
+import Link from "next/link";
 export default function Register() {
     return (
         <div className="w-[full] h-wout-nav pt-[4rem] flex items-center text-start justify-center text-amber-50">
@@ -13,6 +14,7 @@ export default function Register() {
                     <FormLabel className="w-[20rem] pl-1.5 mt-6">Repeat Password</FormLabel>
                     <Input required type="password" />
                     <Button colorScheme={"blue"} className="w-full mt-6" type="submit">Test</Button>
+                    <Link className="mt-6" href="/login">Have got an account ?</Link>
                 </form>
             </Card>
         </div>

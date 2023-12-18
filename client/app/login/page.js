@@ -1,4 +1,5 @@
 import {Button, Input, FormLabel, Card} from "@chakra-ui/react";
+import Link from 'next/link';
 
 export default function Login() {
     return (
@@ -10,6 +11,7 @@ export default function Login() {
                     <FormLabel className="w-[20rem] pl-1.5 mt-6">Password</FormLabel>
                     <Input required type="password" />
                     <Button colorScheme={"blue"} className="w-full mt-6" type="submit">Test</Button>
+                    <Link className="mt-6" href="/register">Haven't got an account ?</Link>
                 </form>
             </Card>
         </div>
