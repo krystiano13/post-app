@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export function Navbar() {
     return (
-        <nav className="flex p-2 items-center justify-between w-full h-[4rem] fixed border-b-2 border-b-solid border-b-blue-300 border-opacity-40 bg-blue-400 bg-opacity-10">
+        <nav className="flex p-2 items-center justify-between w-full h-[4rem] fixed border-b-2 border-b-solid border-b-blue-300 border-opacity-40 bg-bl">
             <div className="md:w-1/3 w-1/5 flex items-center justify-start" id="logo">
                 <Heading as="h1" size="sm">
                     <span className="text-[0.85rem] md:text-[1.25rem]">POST APP</span>

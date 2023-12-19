@@ -27,3 +27,7 @@ body {
 #postPreview:hover {
     border-color: aliceblue;
 }
+
+.bg-bl {
+    background-color: #24334b;
+}
