@@ -1,4 +1,4 @@
-import {Divider, Heading, Spinner, Text} from '@chakra-ui/react';
+import {Divider, Heading, Spinner, Text, Card} from '@chakra-ui/react';
 import {Suspense} from "react";
 
 async function getOnePost(id) {
@@ -10,7 +10,7 @@ export default async function Post({ params }) {
     const post = await getOnePost(params.id);
     return (
         <div className="w-100vw h-auto pt-[5rem] flex flex-col items-center">
-            <section className="wrapper lg:w-1/2 md:w-3/4 w-[80%] mt-6">
+            <Card variant="outline" className="wrapper lg:w-1/2 md:w-3/4 w-[80%] mt-6 p-6 box-border">
                 <Suspense fallback={<Spinner />}>
                     {
                         post.data.length > 0 &&
@@ -28,7 +28,7 @@ export default async function Post({ params }) {
                         <Heading className="text-center">This post doesn't exist or got deleted</Heading>
                     </>
                 }
-            </section>
+            </Card>
         </div>
     )
 }
