@@ -25,6 +25,15 @@ class PostController extends Controller
        ], 200);
     }
 
+    public function getLatest(int $page = 0) {
+        $data = Post::skip($page * 10) -> take(10) -> orderBy('id', 'desc') -> get();
+
+        return response([
+            'status' => true,
+            'data' => $data
+        ], 200);
+    }
+
     public function store(Request $req) {
         $validator = Validator::make($req -> all(),[
             'title' => ['required'],
