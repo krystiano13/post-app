@@ -37,7 +37,12 @@ export function PostList() {
                     <>
                         {
                             posts.map(item => (
-                                <PostPreview />
+                                <PostPreview
+                                    title={item.title}
+                                    content={item.content}
+                                    username={item.username}
+                                    createdAt={item.created_at}
+                                />
                             ))
                         }
                     </>
