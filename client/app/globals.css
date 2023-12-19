@@ -17,3 +17,13 @@ body {
 #gradientPreview {
     background: linear-gradient(transparent, rgba(45, 55, 72, 0.85),#2D3748);
 }
+
+#postPreview {
+    cursor: pointer;
+    border: solid transparent 2px;
+    transition: border-color 200ms;
+}
+
+#postPreview:hover {
+    border-color: aliceblue;
+}
