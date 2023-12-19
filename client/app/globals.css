@@ -13,3 +13,7 @@ body {
 .h-wout-nav {
     height: calc(100vh - 4rem);
 }
+
+#gradientPreview {
+    background: linear-gradient(transparent, rgba(45, 55, 72, 0.85),#2D3748);
+}
