@@ -31,3 +31,35 @@ body {
 .bg-bl {
     background-color: #24334b;
 }
+
+.form-anim {
+    animation: formAppear 300ms;
+}
+
+.card-anim {
+    animation: cardAppear 300ms;
+}
+
+@keyframes formAppear {
+    from {
+        opacity : 0;
+        transform : translateY(100px);
+    }
+
+    to {
+        opacity : 1;
+        transform : translateY(0px);
+    }
+}
+
+@keyframes cardAppear {
+    from {
+        opacity : 0;
+        transform : translateX(-100px);
+    }
+
+    to {
+        opacity : 1;
+        transform : translateX(0px);
+    }
+}

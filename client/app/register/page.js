@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Register() {
     return (
         <div className="w-[full] h-wout-nav pt-[4rem] flex items-center text-start justify-center text-amber-50">
-            <Card size="lg" variant="outline" className="p-6 rounded-full">
+            <Card size="lg" variant="outline" className="p-6 rounded-full form-anim">
                 <form className="flex flex-col justify-center items-center text-start max-w-[20rem] w-[20rem]">
                     <FormLabel className="w-[20rem] pl-1.5 mt-6">Username</FormLabel>
                     <Input required type="text" />
