@@ -5,7 +5,7 @@ import {Button, Menu, MenuButton, MenuItem, MenuList} from "@chakra-ui/react";
 import { useState } from 'react';
 
 export function NavbarAccount() {
-    const [logged, setLogged] = useState(true);
+    const [logged, setLogged] = useState(false);
     return (
         <>
             {
