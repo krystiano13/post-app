@@ -10,13 +10,18 @@ export function NavbarAccount() {
         <>
             {
                 logged && <>
-                    <div className="md:hidden w-1/4 flex items-center justify-end">
+                    <div className="md:w-1/3 w-1/4 flex items-center justify-end">
                         <Menu>
                             <MenuButton as={Button}>
                                 <span className="text-[0.8rem] md:text-[1rem]">Admin</span>
                             </MenuButton>
                             <MenuList>
-
+                                <Link href="/profile">
+                                    <MenuItem>Profile</MenuItem>
+                                </Link>
+                                <Link href="/logout">
+                                    <MenuItem>Logout</MenuItem>
+                                </Link>
                             </MenuList>
                         </Menu>
                     </div>
