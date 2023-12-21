@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function register(Request $req) {
+    public function register(Request $req){
         $validation = Validator::make($req -> all(), [
             'name' => ['required', 'unique:users'],
             'email' => ['required', 'unique:users', 'email'],
@@ -18,7 +18,7 @@ class UserController extends Controller
         ]);
 
         if($validation -> fails()) {
-            return response() -> json([
+            return response([
                 'status' => false,
                 'errors' => $validation -> errors()
             ], 401);
@@ -30,7 +30,7 @@ class UserController extends Controller
             'password' => Hash::make($req -> get('password'))
         ]);
 
-        return response() -> json([
+        return response([
             'status' => true,
             'token' => $user -> createToken("API TOKEN") -> plainTextToken
         ], 200);
