@@ -2,8 +2,10 @@
 
 import {Button, FormLabel, Input} from "@chakra-ui/react";
 import Link from "next/link";
+import { useToast } from "@chakra-ui/react";
 
 export function Form() {
+    const toast = useToast();
     async function handleSubmit(e) {
         e.preventDefault();
         const formData = new FormData(e.target);
@@ -15,6 +17,42 @@ export function Form() {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                if(data.status === true) {
+                    toast({
+                        status: "success",
+                        title: "Account Created !",
+                        isClosable: "True"
+                    });
+                }
+                else {
+                    if(data.errors.name) {
+                        data.errors.name.forEach(item => {
+                            toast({
+                                status: "error",
+                                title: item,
+                                isClosable: "True"
+                            });
+                        })
+                    }
+                    if(data.errors.email) {
+                        data.errors.email.forEach(item => {
+                            toast({
+                                status: "error",
+                                title: item,
+                                isClosable: "True"
+                            });
+                        })
+                    }
+                    if(data.errors.password) {
+                        data.errors.password.forEach(item => {
+                            toast({
+                                status: "error",
+                                title: item,
+                                isClosable: "True"
+                            });
+                        })
+                    }
+                }
             })
     }
 

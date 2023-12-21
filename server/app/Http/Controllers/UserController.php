@@ -32,7 +32,7 @@ class UserController extends Controller
 
         return response([
             'status' => true,
-            'token' => $user -> createToken("API TOKEN") -> plainTextToken
+            'token' => $user -> createToken("API TOKEN", expiresAt:now() -> addMinute()) -> plainTextToken
         ], 200);
     }
 
