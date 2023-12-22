@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useToast } from "@chakra-ui/react";
 
 export function Form() {
+    const toast = useToast();
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -14,7 +15,43 @@ export function Form() {
         })
             .then(res => res.json())
             .then(result => {
-                console.log(result);
+                if(result.status === true) {
+                    localStorage.setItem("token", result.token);
+                    toast({
+                        status: "success",
+                        title: "Logged In !",
+                        isClosable: "True"
+                    });
+                }
+
+                else {
+                    if(result.errors.name) {
+                        result.errors.name.forEach(item => {
+                            toast({
+                                status: "error",
+                                title: item,
+                                isClosable: "True",
+                            });
+                        })
+                    }
+                    if(result.errors.password) {
+                        result.errors.password.forEach(item => {
+                            toast({
+                                status: "error",
+                                title: item,
+                                isClosable: "True"
+                            });
+                        })
+                    }
+                    if(result.errors[0]) {
+                        toast({
+                            status: "error",
+                            title: result.errors[0],
+                            isClosable: "True"
+                        });
+                    }
+
+                }
             })
     }
 

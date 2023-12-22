@@ -43,14 +43,14 @@ class UserController extends Controller
         ]);
 
         if($validation -> fails()) {
-            return response() -> json([
+            return response([
                 'status' => false,
                 'errors' => $validation -> errors()
             ], 401);
         }
 
         if(!Auth::attempt($req -> only(['name', 'password']))) {
-            return response() -> json([
+            return response([
                 'status' => false,
                 'errors' => ['Wrong credentials']
             ], 401);
