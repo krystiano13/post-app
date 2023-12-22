@@ -2,9 +2,11 @@
 import {Button, FormLabel, Input} from "@chakra-ui/react";
 import Link from "next/link";
 import { useToast } from "@chakra-ui/react";
+import { useRouter } from 'next/navigation';
 
 export function Form() {
     const toast = useToast();
+    const Router = useRouter();
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -22,6 +24,7 @@ export function Form() {
                         title: "Logged In !",
                         isClosable: "True"
                     });
+                    Router.push('/');
                 }
 
                 else {
@@ -61,7 +64,7 @@ export function Form() {
            <Input name="name" required type="text"/>
            <FormLabel className="w-[20rem] pl-1.5 mt-6">Password</FormLabel>
            <Input name="password" required type="password"/>
-           <Button colorScheme={"blue"} className="w-full mt-6" type="submit">Test</Button>
+           <Button colorScheme={"blue"} className="w-full mt-6" type="submit">Log In</Button>
            <Link className="mt-6" href="/register">Haven't got an account ?</Link>
        </form>
    )
