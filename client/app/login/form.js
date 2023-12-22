@@ -3,6 +3,7 @@ import {Button, FormLabel, Input} from "@chakra-ui/react";
 import Link from "next/link";
 import { useToast } from "@chakra-ui/react";
 import { useRouter } from 'next/navigation';
+import { useEffect } from "react";
 
 export function Form() {
     const toast = useToast();
@@ -20,6 +21,7 @@ export function Form() {
                 console.log(result);
                 if(result.status === true) {
                     localStorage.setItem("token", result.token);
+                    localStorage.setItem("username",result.username);
                     toast({
                         status: "success",
                         title: "Logged In !",
