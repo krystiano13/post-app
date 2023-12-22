@@ -10,6 +10,21 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+    public function checkToken(Request $req) {
+        $validation = Validator::make($req -> all(), [
+            'token' => 'required'
+        ]);
+
+        if($validation -> fails()) {
+            return response([
+                'status' => false,
+                'errors' => ['Validation error']
+            ],401);
+        }
+
+
+    }
+
     public function register(Request $req){
         $validation = Validator::make($req -> all(), [
             'name' => ['required', 'unique:users'],
@@ -64,4 +79,6 @@ class UserController extends Controller
             'token' => $user -> createToken("API TOKEN") -> plainTextToken
         ], 200);
     }
+
+
 }

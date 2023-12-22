@@ -2,10 +2,15 @@
 
 import Link from "next/link";
 import {Button, Menu, MenuButton, MenuItem, MenuList} from "@chakra-ui/react";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export function NavbarAccount() {
     const [logged, setLogged] = useState(false);
+
+    useEffect(() => {
+
+    },[localStorage.getItem('token')])
+
     return (
         <>
             {

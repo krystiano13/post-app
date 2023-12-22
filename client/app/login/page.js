@@ -1,4 +1,4 @@
-import {Form} from "./form";
+import { Form } from "./form";
 import { Card } from "@chakra-ui/react";
 
 export default function Login() {
