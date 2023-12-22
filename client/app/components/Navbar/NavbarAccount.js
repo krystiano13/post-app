@@ -8,7 +8,21 @@ export function NavbarAccount() {
     const [logged, setLogged] = useState(false);
 
     useEffect(() => {
-
+        fetch('http://127.0.0.1:8000/api/auth/getUser',{ headers: {
+            Authorization: `
+        Bearer ${localStorage.getItem('token')}
+        `
+            } })
+            .then(res => res.json())
+            .then(data => {
+                if(!data.message) {
+                    setLogged(true);
+                }
+                else {
+                    setLogged(false);
+                    localStorage.removeItem('token');
+                }
+            })
     },[localStorage.getItem('token')])
 
     return (

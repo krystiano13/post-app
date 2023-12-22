@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Token;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -10,19 +11,10 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function checkToken(Request $req) {
-        $validation = Validator::make($req -> all(), [
-            'token' => 'required'
-        ]);
-
-        if($validation -> fails()) {
-            return response([
-                'status' => false,
-                'errors' => ['Validation error']
-            ],401);
-        }
-
-
+    public function getUser(Request $req) {
+        return response([
+            'status' => true
+        ], 200);
     }
 
     public function register(Request $req){
