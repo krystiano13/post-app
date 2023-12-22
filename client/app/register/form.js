@@ -3,9 +3,11 @@
 import {Button, FormLabel, Input} from "@chakra-ui/react";
 import Link from "next/link";
 import { useToast } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
 
 export function Form() {
     const toast = useToast();
+    const router = useRouter();
     async function handleSubmit(e) {
         e.preventDefault();
         const formData = new FormData(e.target);
@@ -23,6 +25,7 @@ export function Form() {
                         title: "Account Created !",
                         isClosable: "True"
                     });
+                    e.target.reset();
                 }
                 else {
                     if(data.errors.name) {
@@ -30,7 +33,7 @@ export function Form() {
                             toast({
                                 status: "error",
                                 title: item,
-                                isClosable: "True"
+                                isClosable: "True",
                             });
                         })
                     }
