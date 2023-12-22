@@ -10,7 +10,6 @@ export function NavbarAccount() {
     const [username, setUsername] = useState("User");
     const [checking, setChecking] = useState(true);
     const pathname = usePathname();
-    const router = useRouter();
 
     function logout() {
         localStorage.removeItem('token');

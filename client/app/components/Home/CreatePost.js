@@ -2,10 +2,38 @@
 
 import Link from "next/link";
 import { Button } from "@chakra-ui/react";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import {usePathname} from "next/navigation";
 
 export function CreatePost() {
-    const [logged,setLogged] = useState(true);
+    const [logged,setLogged] = useState(false);
+    const pathname = usePathname();
+
+    useEffect(() => {
+        if (pathname === '/') {
+            if(!localStorage.getItem('token')) {
+                setLogged(false);
+                return;
+            }
+
+            fetch('http://127.0.0.1:8000/api/auth/getUser', {
+                headers: {
+                    Authorization: `
+                    Bearer ${localStorage.getItem('token')}
+                `
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (!data.message) {
+                        setLogged(true);
+                    } else {
+                        setLogged(false);
+                    }
+                })
+        }
+    }, [pathname]);
+
     return (
         <>
             {
