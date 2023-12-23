@@ -3,7 +3,6 @@ import {Button, FormLabel, Input} from "@chakra-ui/react";
 import Link from "next/link";
 import { useToast } from "@chakra-ui/react";
 import { useRouter } from 'next/navigation';
-import { useEffect } from "react";
 
 export function Form() {
     const toast = useToast();

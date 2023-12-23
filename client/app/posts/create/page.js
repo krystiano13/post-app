@@ -1,5 +1,6 @@
 import {Button, Input, FormLabel, Card, Textarea} from "@chakra-ui/react";
-import Link from "next/link";
+import { LoginChecker } from "@/app/posts/create/checkLogged";
+
 export default function CreatePost() {
     return (
         <div className="w-[full] pt-[4rem] h-wout-nav flex items-center text-start justify-center text-amber-50">
@@ -12,6 +13,7 @@ export default function CreatePost() {
                     <Button colorScheme={"blue"} className="w-full mt-6" type="submit">Create Post</Button>
                 </form>
             </Card>
+            <LoginChecker />
         </div>
     )
 }
