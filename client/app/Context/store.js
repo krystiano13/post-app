@@ -4,7 +4,9 @@ import { usePathname } from "next/navigation";
 
 const GlobalContext = createContext({
     logged: false,
-    username: "Admin"
+    username: "Admin",
+    setLogged: (prevState) => {},
+    setUsername: (prevState) => {}
 });
 
 export function GlobalContextProvider({ children }) {
@@ -15,7 +17,7 @@ export function GlobalContextProvider({ children }) {
 
     useEffect(() => {
         if(!localStorage.getItem('token')) {
-            setLogged(false);
+           setLogged(false);
         }
 
         fetch('http://127.0.0.1:8000/api/auth/getUser', {
@@ -36,11 +38,17 @@ export function GlobalContextProvider({ children }) {
                     localStorage.removeItem("username");
                 }
             })
-
     },[pathname]);
 
     return (
-        <GlobalContext.Provider value={{ logged: logged, username: username }}>
+        <GlobalContext.Provider value={
+            {
+                logged,
+                username,
+                setLogged,
+                setUsername
+            }
+        }>
             {
                 children
             }
@@ -48,4 +56,4 @@ export function GlobalContextProvider({ children }) {
     )
 }
 
-export const useGlobalContext = useContext(GlobalContext);
+export const useGlobalContext = () => useContext(GlobalContext);
