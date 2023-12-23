@@ -5,6 +5,7 @@ import { useToast } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import {useGlobalContext} from "@/app/Context/store";
+import { useTransition } from 'react'
 
 export function Form() {
     const toast = useToast();
@@ -12,6 +13,7 @@ export function Form() {
     const globalContext = useGlobalContext();
 
     const [block, setBlock] = useState(false);
+    const [isPending, startTransition] = useTransition();
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -49,7 +51,8 @@ export function Form() {
                     });
                     setBlock(true);
                     setTimeout(() => {
-                        router.push('/');
+                        startTransition(() => router.push('/'));
+                        startTransition(() => router.refresh());
                     },500);
                 }
             })
