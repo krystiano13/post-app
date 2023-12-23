@@ -15,4 +15,4 @@ Route::post('/auth/login', [UserController::class, 'login']);
 Route::get('/posts', [PostController::class, 'get']);
 Route::get('/posts/{id}', [PostController::class, 'getOne']);
 Route::get('/posts/latest/{page}', [PostController::class, 'getLatest']);
-Route::post('/posts/store', [PostController::class, 'store']) -> middleware('auth:sanctum');
+Route::middleware('auth:sanctum') -> post('/posts/store', [PostController::class, 'store']);

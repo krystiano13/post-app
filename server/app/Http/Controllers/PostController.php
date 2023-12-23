@@ -56,8 +56,7 @@ class PostController extends Controller
         ]);
 
         return response([
-            'status' => true,
-            'message' => "Post created successfully"
+            'status' => true
         ], 200);
     }
 }

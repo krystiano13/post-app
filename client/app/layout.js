@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-            <main className="w-[100vw] min-h-[100vh]">
+            <main className="w-[100vw] min-h-[100vh] overflow-x-hidden">
                 <GlobalContextProvider>
                     <Navbar />
                     { children }
