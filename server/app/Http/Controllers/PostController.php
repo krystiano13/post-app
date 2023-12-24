@@ -59,4 +59,29 @@ class PostController extends Controller
             'status' => true
         ], 200);
     }
+
+    public function edit(int $id,Request $req) {
+        $validation = Validator::make($req -> all(),[
+            'title' => ['required'],
+            'content' => ['required', 'min:1']
+        ]);
+
+        if($validation -> fails()) {
+            $errors = $validation -> errors();
+            return response([
+                'status' => false,
+                'errors' => $errors
+            ], 403);
+        }
+
+        Post::where('id', $id) -> update([
+            'title' => $req -> get('title'),
+            'content' => $req -> get('content')
+        ]);
+
+        return response([
+            'status' => true,
+            'message' => 'Post Updated !'
+        ],200);
+    }
 }
