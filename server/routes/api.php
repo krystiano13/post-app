@@ -4,12 +4,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CommentController;
 
 Route::middleware('auth:sanctum')->get('/auth/getUser', [UserController::class, 'getUser']);
 
 //auth
 Route::post('/auth/register',[UserController::class, 'register']);
 Route::post('/auth/login', [UserController::class, 'login']);
+
+//comments
+Route::get('/comments/{postId}', [CommentController::class, 'get']);
 
 //posts actions
 Route::get('/posts', [PostController::class, 'get']);
