@@ -17,3 +17,4 @@ Route::get('/posts/{id}', [PostController::class, 'getOne']);
 Route::get('/posts/latest/{page}', [PostController::class, 'getLatest']);
 Route::middleware('auth:sanctum') -> post('/posts/store', [PostController::class, 'store']);
 Route::middleware('auth:sanctum') -> post('/posts/edit/{id}', [PostController::class, 'edit']);
+Route::middleware('auth:sanctum') -> post('/posts/delete/{id}', [PostController::class, 'delete']);

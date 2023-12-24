@@ -86,4 +86,26 @@ class PostController extends Controller
             'message' => 'Post Updated !'
         ],200);
     }
+
+    public function delete(int $id, Request $req) {
+        $validation = Validator::make($req -> all(),[
+            'username' => 'required'
+        ]);
+
+        if($validation -> fails()) {
+            return response([
+                'status' => false,
+                'errors' => $validation -> errors()
+            ], 403);
+        }
+
+        Post::where('id', $id)
+            -> where('username', $req -> get('username'))
+            -> delete();
+
+        return response([
+            'status' => true,
+            'message' => "Post deleted !"
+        ], 200);
+    }
 }
