@@ -6,6 +6,7 @@ Coming Soon
 ## Tech Stack:
 * Next.js
 * Laravel
+* Laravel Sanctum
 * MySQL
 * PHP
 * TailwindCSS
