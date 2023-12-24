@@ -63,6 +63,7 @@ class PostController extends Controller
     public function edit(int $id,Request $req) {
         $validation = Validator::make($req -> all(),[
             'title' => ['required'],
+            'username' => ['required', 'min:1'],
             'content' => ['required', 'min:1']
         ]);
 
@@ -74,8 +75,9 @@ class PostController extends Controller
             ], 403);
         }
 
-        Post::where('id', $id) -> update([
+        Post::where('id', $id) -> where('username', $req -> get('username')) -> update([
             'title' => $req -> get('title'),
+            'username' => $req -> get('username'),
             'content' => $req -> get('content')
         ]);
 
