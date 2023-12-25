@@ -9,29 +9,30 @@ class Comment extends Model
 {
     use HasFactory;
 
-    /*
+    /**
      * table name
      * @var string
      */
     protected $table = 'comments';
 
-    /*
+    /**
     * primary key
     * @var string
     */
     protected $primaryKey = 'id';
 
-    /*
+    /**
      * @var bool
      */
     public $incrementing = true;
 
-    /*
+    /**
      * @var array
      */
     protected $fillable = [
         'username',
         'created_at',
-        'text'
+        'text',
+        'post_id'
     ];
 }
