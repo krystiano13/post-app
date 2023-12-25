@@ -14,6 +14,8 @@ Route::post('/auth/login', [UserController::class, 'login']);
 
 //comments
 Route::get('/comments/{postId}', [CommentController::class, 'get']);
+Route::post('/comments/store', [CommentController::class, 'store']);
+Route::post('/comments/edit/{id}', [CommentController::class, 'edit']);
 
 //posts actions
 Route::get('/posts', [PostController::class, 'get']);

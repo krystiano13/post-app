@@ -18,6 +18,31 @@ class CommentController extends Controller
         ], 200);
     }
 
+    public function edit(int $id, Request $request) {
+        $validation = Validator::make($request -> all(),[
+            'username' => 'required',
+            'text' => 'required'
+        ]);
+
+        if($validation -> fails()) {
+            return response([
+                'status' => false,
+                'errors' => $validation -> errors()
+            ], 403);
+        }
+
+        Comment::where('id', $id)
+            -> where('username', $request -> get('username'))
+            -> update([
+                'text' => $request -> get('text')
+            ]);
+
+        return response([
+            'status' => true,
+            'message' => 'Comment edited'
+        ], 200);
+    }
+
     public function store(Request $request)
     {
         $validation = Validator::make($request -> all(),[
