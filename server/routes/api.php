@@ -12,10 +12,11 @@ Route::middleware('auth:sanctum')->get('/auth/getUser', [UserController::class, 
 Route::post('/auth/register',[UserController::class, 'register']);
 Route::post('/auth/login', [UserController::class, 'login']);
 
-//comments
+//comments actions
 Route::get('/comments/{postId}', [CommentController::class, 'get']);
 Route::post('/comments/store', [CommentController::class, 'store']);
 Route::post('/comments/edit/{id}', [CommentController::class, 'edit']);
+Route::post('/comments/delete/{id}', [CommentController::class, 'destroy']);
 
 //posts actions
 Route::get('/posts', [PostController::class, 'get']);

@@ -69,4 +69,26 @@ class CommentController extends Controller
             'message' => 'Comment Created'
         ], 200);
     }
+
+    public function destroy(int $id, Request $req) {
+        $validation = Validator::make($req -> all(),[
+            'username' => 'required'
+        ]);
+
+        if($validation -> fails()) {
+            return response([
+                'status' => false,
+                'errors' => $validation -> errors()
+            ], 403);
+        }
+
+        Comment::where('id', $id)
+            -> where('username', $req -> get('username'))
+            -> delete();
+
+        return response([
+            'status' => true,
+            'message' => 'Comment deleted'
+        ], 200);
+    }
 }
