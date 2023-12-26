@@ -11,3 +11,4 @@ Coming Soon
 * PHP
 * TailwindCSS
 * Chakra UI
+* CSS

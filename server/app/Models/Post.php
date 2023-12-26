@@ -22,5 +22,8 @@ class Post extends Model
         'content'
     ];
 
+    /**
+     * @var bool
+     */
     public $timestamps = true;
 }
