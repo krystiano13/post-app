@@ -1,16 +1,11 @@
 'use client'
 
-import {Card, Heading, Textarea} from "@chakra-ui/react";
+import {Button, Card, Heading, Textarea} from "@chakra-ui/react";
 import { useGlobalContext } from "@/app/Context/store";
 import { useEffect } from "react";
 
 export function CommentsForm() {
     const globalContext = useGlobalContext();
-
-    useEffect(() => {
-        console.log(globalContext);
-    }, []);
-
     return (
         <>
             {
@@ -23,6 +18,7 @@ export function CommentsForm() {
                             </span>
                         </Heading>
                         <Textarea size="lg" className="mt-6 max-h-[15rem] min-h-[15rem] h-[100%]" />
+                        <Button className="mt-6" type="submit">Send Comment</Button>
                     </form>
                 </Card>
             }
