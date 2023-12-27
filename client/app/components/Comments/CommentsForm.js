@@ -15,7 +15,7 @@ export function CommentsForm() {
         <>
             {
                 globalContext.logged &&
-                <Card className="lg:w-1/2 md:w-3/4 w-[80%] mt-6 p-4">
+                <Card variant="unstyled" className="lg:w-1/2 md:w-3/4 w-[80%] mt-6">
                     <form>
                         <Heading>
                             <span className="text-[1.6rem]">
