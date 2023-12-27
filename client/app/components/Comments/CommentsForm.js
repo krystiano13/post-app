@@ -1,6 +1,6 @@
 'use client'
 
-import { Card, Heading, TextArea } from "@chakra-ui/react";
+import {Card, Heading, Textarea} from "@chakra-ui/react";
 import { useGlobalContext } from "@/app/Context/store";
 import { useEffect } from "react";
 
@@ -15,13 +15,14 @@ export function CommentsForm() {
         <>
             {
                 globalContext.logged &&
-                <Card className="lg:w-1/2 md:w-3/4 w-[80%] mt-6">
+                <Card className="lg:w-1/2 md:w-3/4 w-[80%] mt-6 p-4">
                     <form>
                         <Heading>
-                            <span>
+                            <span className="text-[1.6rem]">
                                 Comment as { globalContext.username }
                             </span>
                         </Heading>
+                        <Textarea size="lg" className="mt-6 max-h-[15rem] min-h-[15rem] h-[100%]" />
                     </form>
                 </Card>
             }
