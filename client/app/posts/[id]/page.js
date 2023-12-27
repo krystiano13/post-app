@@ -1,5 +1,6 @@
 import {Divider, Heading, Spinner, Text, Card} from '@chakra-ui/react';
 import {Suspense} from "react";
+import {Comments} from "@/app/components/Comments/comments";
 
 async function getOnePost(id) {
     const res = await fetch(`http://127.0.0.1:8000/api/posts/${id}`);
@@ -30,6 +31,7 @@ export default async function Post({ params }) {
                     </>
                 }
             </Card>
+            <Comments postId={params.id} />
         </div>
     )
 }
