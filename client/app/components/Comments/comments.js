@@ -2,6 +2,7 @@
 
 import { Card, Divider } from "@chakra-ui/react";
 import { SingleComment } from "@/app/components/Comments/SingleComment";
+import { CommentsForm } from "@/app/components/Comments/CommentsForm";
 
 async function getComments(postId) {
     const res = await fetch(`http://127.0.0.1:8000/api/comments/${postId}`);
@@ -12,6 +13,7 @@ export async function Comments({ postId }) {
     const result = await getComments(postId);
     return (
         <>
+            <CommentsForm />
             <div id="dividerWrapper" className="lg:w-1/2 md:w-3/4 w-[80%] mt-12">
                 <Divider />
             </div>
