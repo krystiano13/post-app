@@ -29,7 +29,7 @@ export function SingleComment({ username, date, text, commentId }) {
             }
             {
                 editMode && <form className="mt-2">
-                    <Textarea>{ text }</Textarea>
+                    <Textarea name="text">{ text }</Textarea>
                 </form>
             }
             <Divider className="mt-4" />
