@@ -43,7 +43,7 @@ export function CommentsForm({ postId }) {
         <>
             {
                 globalContext.logged &&
-                <Card variant="unstyled" className="lg:w-1/2 md:w-3/4 w-[80%] mt-6">
+                <Card variant="unstyled" className="lg:w-1/2 md:w-3/4 w-[80%] mt-6 card-anim">
                     <form onSubmit={handleSubmit}>
                         <Heading>
                             <span className="text-[1.6rem]">
