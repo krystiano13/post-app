@@ -1,13 +1,16 @@
 'use client'
 
-import { Heading, Text, Divider, Button } from "@chakra-ui/react";
+import {Heading, Text, Divider, Button, Textarea} from "@chakra-ui/react";
 import { useGlobalContext } from "@/app/Context/store";
 import { deleteComment } from "@/app/components/Comments/functions/deleteComment";
 import { useToast } from "@chakra-ui/react";
+import { useState } from 'react';
 
 export function SingleComment({ username, date, text, commentId }) {
     const context = useGlobalContext();
     const toast = useToast();
+
+    const [editMode, setEditMode] = useState(false);
 
     return (
         <section id="comment" className="w-full p-4">
@@ -19,13 +22,20 @@ export function SingleComment({ username, date, text, commentId }) {
                     { date }
                 </span>
             </Heading>
-            <Text className="mt-2">
-                { text }
-            </Text>
+            {
+                !editMode && <Text className="mt-2">
+                    { text }
+                </Text>
+            }
+            {
+                editMode && <form className="mt-2">
+                    <Textarea></Textarea>
+                </form>
+            }
             <Divider className="mt-4" />
             {
                 context.logged && context.username === username && <>
-                    <Button className="mt-4">Edit</Button>
+                    <Button onClick={() => setEditMode(prev => !prev)} className="mt-4">Edit</Button>
                     <Button onClick={(e) => {
                         const del = deleteComment(e, commentId, username);
                         if(del === false) {
