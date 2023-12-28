@@ -3,6 +3,7 @@
 import {Heading, Text, Divider, Button, Textarea} from "@chakra-ui/react";
 import { useGlobalContext } from "@/app/Context/store";
 import { deleteComment } from "@/app/components/Comments/functions/deleteComment";
+import { editComment } from "@/app/components/Comments/functions/editComment";
 import { useToast } from "@chakra-ui/react";
 import { useState } from 'react';
 
@@ -28,8 +29,18 @@ export function SingleComment({ username, date, text, commentId }) {
                 </Text>
             }
             {
-                editMode && <form className="mt-2">
+                editMode && <form onSubmit={(e) => {
+                    const ed = editComment(e, commentId, username);
+                    if(ed === false) {
+                        toast({
+                            status: "error",
+                            isClosable: true,
+                            title: "Couldn't edit the comment"
+                        })
+                    }
+                }} className="mt-2">
                     <Textarea name="text">{ text }</Textarea>
+                    <Button className="mt-2" type="submit">Confirm</Button>
                 </form>
             }
             <Divider className="mt-4" />
