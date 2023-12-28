@@ -3,9 +3,12 @@
 import { Heading, Text, Divider, Button } from "@chakra-ui/react";
 import { useGlobalContext } from "@/app/Context/store";
 import { deleteComment } from "@/app/components/Comments/functions/deleteComment";
+import { useToast } from "@chakra-ui/react";
 
 export function SingleComment({ username, date, text, commentId }) {
     const context = useGlobalContext();
+    const toast = useToast();
+
     return (
         <section id="comment" className="w-full p-4">
             <Heading className="text-start flex items-center">
@@ -24,7 +27,14 @@ export function SingleComment({ username, date, text, commentId }) {
                 context.logged && context.username === username && <>
                     <Button className="mt-4">Edit</Button>
                     <Button onClick={(e) => {
-                        deleteComment(e, commentId, username);
+                        const del = deleteComment(e, commentId, username);
+                        if(del === false) {
+                            toast({
+                                status: "error",
+                                isClosable: true,
+                                title: "Couldn't delete the comment"
+                            })
+                        }
                     }} className="ml-2 mt-4">Delete</Button>
                 </>
             }

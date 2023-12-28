@@ -21,6 +21,7 @@ export async function deleteComment(e,id,username) {
 
             else {
                 window.location.reload();
+                return true;
             }
         })
 }
