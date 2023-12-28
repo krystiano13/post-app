@@ -3,7 +3,6 @@
 import {Button, Card, Heading, Textarea} from "@chakra-ui/react";
 import { useGlobalContext } from "@/app/Context/store";
 import { useToast } from "@chakra-ui/react";
-import { useEffect } from "react";
 
 export function CommentsForm({ postId }) {
     const globalContext = useGlobalContext();

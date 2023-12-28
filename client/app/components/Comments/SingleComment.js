@@ -1,4 +1,4 @@
-import { Heading, Text, Divider } from "@chakra-ui/react";
+import { Heading, Text, Divider, Button } from "@chakra-ui/react";
 
 export function SingleComment({ username, date, text }) {
     return (
@@ -15,6 +15,8 @@ export function SingleComment({ username, date, text }) {
                 { text }
             </Text>
             <Divider className="mt-4" />
+            <Button className="mt-4">Edit</Button>
+            <Button className="ml-2 mt-4">Delete</Button>
         </section>
     )
 }
