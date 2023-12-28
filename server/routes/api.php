@@ -14,9 +14,9 @@ Route::post('/auth/login', [UserController::class, 'login']);
 
 //comments actions
 Route::get('/comments/{postId}', [CommentController::class, 'get']);
-Route::post('/comments/store', [CommentController::class, 'store']);
-Route::post('/comments/edit/{id}', [CommentController::class, 'edit']);
-Route::post('/comments/delete/{id}', [CommentController::class, 'destroy']);
+Route::middleware('auth:sanctum') -> post('/comments/store', [CommentController::class, 'store']);
+Route::middleware('auth:sanctum') -> post('/comments/edit/{id}', [CommentController::class, 'edit']);
+Route::middleware('auth:sanctum') -> post('/comments/delete/{id}', [CommentController::class, 'destroy']);
 
 //posts actions
 Route::get('/posts', [PostController::class, 'get']);
