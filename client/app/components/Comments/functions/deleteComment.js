@@ -1,13 +1,10 @@
-import { useToast } from "@chakra-ui/react";
-
 export async function deleteComment(e,id,username) {
     e.preventDefault();
-    const data = new FormData(e.target);
-    const toast = useToast();
+    const data = new FormData();
 
     data.append('username',username);
 
-    await fetch(`http://127.0.0.1:8000/api/delete/${id}`, {
+    await fetch(`http://127.0.0.1:8000/api/comments/delete/${id}`, {
         method: "POST",
         headers: {
             Authorization: `
@@ -19,11 +16,7 @@ export async function deleteComment(e,id,username) {
         .then(res => res.json())
         .then(data => {
             if(data.status === false) {
-                toast({
-                    status: "error",
-                    isClosable: true,
-                    title: "Couldn't delete comment"
-                });
+                return false;
             }
 
             else {

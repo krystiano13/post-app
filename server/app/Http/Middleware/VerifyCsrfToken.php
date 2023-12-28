@@ -16,6 +16,6 @@ class VerifyCsrfToken extends Middleware
         '/api/auth/login',
         '/api/posts/store',
         '/api/comments/store',
-        '/posts/delete/{id}'
+        '/api/comments/delete/*'
     ];
 }

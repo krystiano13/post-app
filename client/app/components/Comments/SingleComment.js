@@ -1,7 +1,10 @@
+'use client'
+
 import { Heading, Text, Divider, Button } from "@chakra-ui/react";
 import { useGlobalContext } from "@/app/Context/store";
+import { deleteComment } from "@/app/components/Comments/functions/deleteComment";
 
-export function SingleComment({ username, date, text }) {
+export function SingleComment({ username, date, text, commentId }) {
     const context = useGlobalContext();
     return (
         <section id="comment" className="w-full p-4">
@@ -20,7 +23,9 @@ export function SingleComment({ username, date, text }) {
             {
                 context.logged && context.username === username && <>
                     <Button className="mt-4">Edit</Button>
-                    <Button className="ml-2 mt-4">Delete</Button>
+                    <Button onClick={(e) => {
+                        deleteComment(e, commentId, username);
+                    }} className="ml-2 mt-4">Delete</Button>
                 </>
             }
         </section>

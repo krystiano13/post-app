@@ -22,6 +22,7 @@ export async function Comments({ postId }) {
                     result.comments.map(item => (
                         <SingleComment
                             key={item.id}
+                            commentId={item.id}
                             username={item.username}
                             text={item.text}
                             date={item.created_at}
