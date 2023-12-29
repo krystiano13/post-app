@@ -4,14 +4,11 @@ export function formatDate(dateText) {
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
 
-    let monthText = "";
-
     if(month < 10) {
-        monthText = `0${month}`;
-    }
-    else {
-        monthText = month;
+        return `${year}-0${month}-${day}`;
     }
 
-    return `${year} - ${monthText} - ${day}`;
+    else {
+        return `${year}-${month}-${day}`;
+    }
 }
