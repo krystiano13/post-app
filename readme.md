@@ -1,7 +1,11 @@
 # Post App
-## Simple fullstack App
+## Simple CRUD App
 
-Coming Soon
+## Features:
+* creating posts
+* editing or deleting posts
+* commenting posts
+* editing or deleting posts
 
 ## Tech Stack:
 * Next.js
