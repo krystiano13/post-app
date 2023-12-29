@@ -15,17 +15,25 @@ Route::post('/auth/login', [UserController::class, 'login']);
 
 //profile
 Route::get('/profile/{username}', [ProfileController::class, 'get']);
+Route::middleware('auth:sanctum')
+    -> post('/profile/edit/{id}', [ProfileController::class, 'edit']);
 
 //comments actions
 Route::get('/comments/{postId}', [CommentController::class, 'get']);
-Route::middleware('auth:sanctum') -> post('/comments/store', [CommentController::class, 'store']);
-Route::middleware('auth:sanctum') -> post('/comments/edit/{id}', [CommentController::class, 'edit']);
-Route::middleware('auth:sanctum') -> post('/comments/delete/{id}', [CommentController::class, 'destroy']);
+Route::middleware('auth:sanctum')
+    -> post('/comments/store', [CommentController::class, 'store']);
+Route::middleware('auth:sanctum')
+    -> post('/comments/edit/{id}', [CommentController::class, 'edit']);
+Route::middleware('auth:sanctum')
+    -> post('/comments/delete/{id}', [CommentController::class, 'destroy']);
 
 //posts actions
 Route::get('/posts', [PostController::class, 'get']);
 Route::get('/posts/{id}', [PostController::class, 'getOne']);
 Route::get('/posts/latest/{page}', [PostController::class, 'getLatest']);
-Route::middleware('auth:sanctum') -> post('/posts/store', [PostController::class, 'store']);
-Route::middleware('auth:sanctum') -> post('/posts/edit/{id}', [PostController::class, 'edit']);
-Route::middleware('auth:sanctum') -> post('/posts/delete/{id}', [PostController::class, 'delete']);
+Route::middleware('auth:sanctum')
+    -> post('/posts/store', [PostController::class, 'store']);
+Route::middleware('auth:sanctum')
+    -> post('/posts/edit/{id}', [PostController::class, 'edit']);
+Route::middleware('auth:sanctum')
+    -> post('/posts/delete/{id}', [PostController::class, 'delete']);
