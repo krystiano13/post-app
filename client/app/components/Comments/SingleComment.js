@@ -6,6 +6,7 @@ import { deleteComment } from "@/app/components/Comments/functions/deleteComment
 import { editComment } from "@/app/components/Comments/functions/editComment";
 import { useToast } from "@chakra-ui/react";
 import { useState } from 'react';
+import {formatDate} from "@/app/components/Date/Date";
 
 export function SingleComment({ username, date, text, commentId }) {
     const context = useGlobalContext();
@@ -20,7 +21,7 @@ export function SingleComment({ username, date, text, commentId }) {
                     { username }
                 </span>
                 <span className="ml-2 text-[1rem] font-regular opacity-75">
-                    { date }
+                    { formatDate(date) }
                 </span>
             </Heading>
             {
