@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Token;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -35,6 +36,11 @@ class UserController extends Controller
             'name' => $req -> get('name'),
             'email' => $req -> get('email'),
             'password' => Hash::make($req -> get('password'))
+        ]);
+
+        $profile = Profile::create([
+            'username' => $req -> get('name'),
+            'about' => ""
         ]);
 
         return response([
