@@ -3,7 +3,7 @@ import {Avatar, Card, Heading, Text} from "@chakra-ui/react";
 export default function Profile({params}) {
     return (
         <div className="w-[100vw] h-wout-nav pt-[4rem] flex justify-center items-center">
-            <Card className="p-4 flex flex-col items-center lg:w-[30%] md:w-[40%] w-[70%]" variant="outline">
+            <Card className="form-anim p-4 flex flex-col items-center lg:w-[30%] md:w-[40%] w-[70%]" variant="outline">
                 <Avatar className="mt-6"/>
                 <Heading className="mt-6">Admin</Heading>
                 <Text className="text-center mt-6">
