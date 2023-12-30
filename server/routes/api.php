@@ -16,7 +16,7 @@ Route::post('/auth/login', [UserController::class, 'login']);
 //profile
 Route::get('/profile/{username}', [ProfileController::class, 'get']);
 Route::middleware('auth:sanctum')
-    -> post('/profile/edit/{id}', [ProfileController::class, 'edit']);
+    -> post('/profile/edit', [ProfileController::class, 'edit']);
 
 //comments actions
 Route::get('/comments/{postId}', [CommentController::class, 'get']);

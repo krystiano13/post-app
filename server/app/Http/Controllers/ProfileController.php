@@ -34,5 +34,10 @@ class ProfileController extends Controller
             -> update([
                 'about' => $req -> get('about')
             ]);
+
+        return response([
+            'status' => true,
+            'message' => 'profile updated'
+        ], 200);
     }
 }
