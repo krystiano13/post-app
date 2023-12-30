@@ -17,7 +17,7 @@ class ProfileController extends Controller
         ], 200);
     }
 
-    public function edit(int $id,Request $req) {
+    public function edit(Request $req) {
         $validation = Validator::make($req -> all(), [
             'username' => 'required',
             'about' => 'required'
@@ -30,8 +30,7 @@ class ProfileController extends Controller
             ],403);
         }
 
-        Profile::where('id', $id)
-            -> where('username', $req -> get('username'))
+        Profile::where('username', $req -> get('username'))
             -> update([
                 'about' => $req -> get('about')
             ]);
