@@ -1,4 +1,4 @@
-import {Avatar, Card, Heading, Spinner, Text} from "@chakra-ui/react";
+import {Avatar, Card, Heading, Spinner, Text, Button} from "@chakra-ui/react";
 import {Suspense} from "react";
 
 async function getProfile(username) {
@@ -27,6 +27,7 @@ export default async function Profile({params}) {
                             </Text>
                     }
                 </Suspense>
+                <Button className="mt-6 w-full">Edit Profile</Button>
             </Card>
         </div>
     )
