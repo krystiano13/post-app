@@ -2,6 +2,7 @@ import {Divider, Heading, Spinner, Text, Card} from '@chakra-ui/react';
 import {Suspense} from "react";
 import {Comments} from "@/app/components/Comments/comments";
 import {formatDate} from "@/app/components/Date/Date";
+import Link from 'next/link';
 
 async function getOnePost(id) {
     const res = await fetch(`http://127.0.0.1:8000/api/posts/${id}`);
@@ -18,7 +19,9 @@ export default async function Post({ params }) {
                     {
                         post.data[0] &&
                         <>
-                            <Heading color="gray.400" as="p" size="xs">{ post.data[0].username } | { formatDate(post.data[0].created_at) }</Heading>
+                            <Heading color="gray.400" as="p" size="xs">
+                                <Link href={`/profile/${post.data[0].username}`}>{ post.data[0].username }</Link> | { formatDate(post.data[0].created_at) }
+                            </Heading>
                             <Heading>{ post.data[0].title }</Heading>
                             <Divider className="mt-3 mb-3" />
                             <Text>{ post.data[0].content }</Text>

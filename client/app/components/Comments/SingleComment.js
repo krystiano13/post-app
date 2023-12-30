@@ -7,6 +7,7 @@ import { editComment } from "@/app/components/Comments/functions/editComment";
 import { useToast } from "@chakra-ui/react";
 import { useState } from 'react';
 import {formatDate} from "@/app/components/Date/Date";
+import Link from 'next/link';
 
 export function SingleComment({ username, date, text, commentId }) {
     const context = useGlobalContext();
@@ -18,7 +19,7 @@ export function SingleComment({ username, date, text, commentId }) {
         <section id="comment" className="w-full p-4">
             <Heading className="text-start flex items-center">
                 <span className="text-[1.5rem]">
-                    { username }
+                    <Link href={`/profile/${ username }`}>{ username }</Link>
                 </span>
                 <span className="ml-2 text-[1rem] font-regular opacity-75">
                     { formatDate(date) }
