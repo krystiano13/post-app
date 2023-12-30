@@ -27,7 +27,7 @@ export function NavbarAccount() {
                                     <span className="text-[0.7rem] md:text-[1rem]">{globalContext.username}</span>
                                 </MenuButton>
                                 <MenuList>
-                                    <Link href="/profile">
+                                    <Link href={`/profile/${globalContext.username}`}>
                                         <MenuItem>Profile</MenuItem>
                                     </Link>
                                     <MenuItem onClick={logout}>Logout</MenuItem>
