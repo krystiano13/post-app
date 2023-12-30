@@ -3,7 +3,11 @@ import {Suspense} from "react";
 import { EditButton } from "@/app/profile/[username]/EditButton";
 
 async function getProfile(username) {
-    const res = await fetch(`http://127.0.0.1:8000/api/profile/${username}`);
+    const res = await fetch(`http://127.0.0.1:8000/api/profile/${username}`, {
+        next: {
+            revalidate: 0
+        }
+    });
     return res.json();
 }
 
