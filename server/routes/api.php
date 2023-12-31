@@ -31,6 +31,7 @@ Route::middleware('auth:sanctum')
 Route::get('/posts', [PostController::class, 'get']);
 Route::get('/posts/{id}', [PostController::class, 'getOne']);
 Route::get('/posts/latest/{page}', [PostController::class, 'getLatest']);
+Route::get('/posts/search/{text}', [PostController::class, 'searchLatest']);
 Route::middleware('auth:sanctum')
     -> post('/posts/store', [PostController::class, 'store']);
 Route::middleware('auth:sanctum')

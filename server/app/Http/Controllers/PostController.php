@@ -25,6 +25,18 @@ class PostController extends Controller
        ], 200);
     }
 
+    public function searchLatest(string $text) {
+        $result = Post::where('title','like','%'.$text.'%')
+            -> take(10)
+            -> orderBy('id', 'desc')
+            -> get();
+
+        return response([
+            'status' => true,
+            'result' => $result
+        ], 200);
+    }
+
     public function getLatest(int $page = 0) {
         $data = Post::skip($page * 10) -> take(10) -> orderBy('id', 'desc') -> get();
 
