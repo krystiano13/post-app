@@ -25,7 +25,13 @@ class PostController extends Controller
        ], 200);
     }
 
-    public function getLatest(int $page, string $text) {
+    public function getLatest(int $page, Request $req) {
+        $text = "";
+
+        if($req -> get("text")) {
+            $text = $req -> get("text");
+        }
+
         $data = Post::where('title','like','%'.$text.'%')
             -> skip($page * 10)
             -> take(10)

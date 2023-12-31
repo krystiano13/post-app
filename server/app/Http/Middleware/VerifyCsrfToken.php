@@ -15,6 +15,7 @@ class VerifyCsrfToken extends Middleware
         '/api/auth/register',
         '/api/auth/login',
         '/api/posts/store',
+        '/api/posts/latest/*',
         '/api/comments/store',
         '/api/comments/delete/*',
         '/api/comments/edit/*',
