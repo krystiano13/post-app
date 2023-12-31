@@ -2,8 +2,8 @@
 
 import { PostPreview } from "@/app/components/PostPreview/PostPreview";
 import { Spinner } from "@chakra-ui/react";
-import {Suspense} from "react";
 import Link from 'next/link';
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from 'react';
 
 export function PostList() {
@@ -11,9 +11,17 @@ export function PostList() {
     const [page, setPage] = useState(0);
     const [loading, setLoading] = useState(true);
 
+    const params = useSearchParams();
+
     useEffect(() => {
         const data = new FormData();
-        data.append("text", "");
+        let text = "";
+
+        if(params.get("text")) {
+            text = params.get("text");
+        }
+
+        data.append("text", text);
         fetch(`http://127.0.0.1:8000/api/posts/latest/${page}`, {
             method: "POST",
             body: data
