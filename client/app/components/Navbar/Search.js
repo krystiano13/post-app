@@ -1,13 +1,14 @@
 'use client'
 
 import { Input, Button } from "@chakra-ui/react";
-import { useGlobalContext } from "@/app/Context/store";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export function Search() {
-    const globalContext = useGlobalContext();
-
-    async function handleSubmit(e) {
+    const router = useRouter();
+    const params = useSearchParams();
+    function handleSubmit(e) {
         e.preventDefault();
+        window.location.href = `/?text=${e.target[0].value}`;
     }
 
     return (
