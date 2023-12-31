@@ -7,12 +7,16 @@ const GlobalContext = createContext({
     logged: false,
     username: "Admin",
     setLogged: (prevState) => {},
-    setUsername: (prevState) => {}
+    setUsername: (prevState) => {},
+    search: "",
+    isSearch: false
 });
 
 export function GlobalContextProvider({ children }) {
     const [logged, setLogged] = useState(false);
     const [username, setUsername] = useState("Admin");
+    const [search, setSearch] = useState("");
+    const [isSearch, setIsSearch] = useState(false);
 
     const pathname = usePathname();
 
@@ -47,7 +51,9 @@ export function GlobalContextProvider({ children }) {
                 logged,
                 username,
                 setLogged,
-                setUsername
+                setUsername,
+                search,
+                isSearch
             }
         }>
             {
