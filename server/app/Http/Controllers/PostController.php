@@ -33,7 +33,7 @@ class PostController extends Controller
 
         return response([
             'status' => true,
-            'result' => $result
+            'data' => $result
         ], 200);
     }
 
