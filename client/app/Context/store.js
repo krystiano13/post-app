@@ -8,6 +8,8 @@ const GlobalContext = createContext({
     username: "Admin",
     setLogged: (prevState) => {},
     setUsername: (prevState) => {},
+    setSearch: (prevState) => {},
+    setIsSearch: (prevState) => {},
     search: "",
     isSearch: false
 });
@@ -53,7 +55,9 @@ export function GlobalContextProvider({ children }) {
                 setLogged,
                 setUsername,
                 search,
-                isSearch
+                isSearch,
+                setSearch,
+                setIsSearch
             }
         }>
             {

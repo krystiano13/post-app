@@ -3,6 +3,7 @@ import Link from "next/link";
 
 //components
 import {NavbarAccount} from "@/app/components/Navbar/NavbarAccount";
+import {Search} from "@/app/components/Navbar/Search";
 
 export function Navbar() {
     return (
@@ -14,9 +15,7 @@ export function Navbar() {
                     </Heading>
                 </Link>
             </div>
-            <div className="md:w-1/3 w-1/2 flex items-center justify-center" id="searchBar">
-                <Input name="search" type="text" placeholder="Search ..." />
-            </div>
+            <Search />
             <NavbarAccount />
         </nav>
     )
