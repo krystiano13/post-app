@@ -1,21 +1,9 @@
 //components
 import { PostList } from "@/app/components/PostPreview/PostList";
 import { CreatePost } from "@/app/components/Home/CreatePost";
-import { useGlobalContext } from "@/app/Context/store";
 
 async function getPosts(page = 0) {
-    const globalContext = useGlobalContext();
-    let url;
-
-    if(globalContext.isSearch) {
-        url = `http://127.0.0.1:8000/api/posts/search/${globalContext.search}`;
-    }
-
-    else {
-        url = `http://127.0.0.1:8000/api/posts/latest/${page}`;
-    }
-
-    const res = await fetch(url, {
+    const res = await fetch(`http://127.0.0.1:8000/api/posts/latest/${page}`, {
         next: {
             revalidate: 0
         }
