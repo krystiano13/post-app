@@ -36,7 +36,6 @@ export function PostList() {
     return (
         <div id={posts.length.toString()} className="w-[100vw]">
                 {
-                    loading === false &&
                     posts.map(item => (
                         <Link className="w-[100vw] flex justify-center" href={`/posts/${item.id}`}>
                             <PostPreview
@@ -49,12 +48,7 @@ export function PostList() {
                         </Link>
                     ))
                 }
-            {
-                loading === true &&
-                <div className="w-[100vw] h-wout-nav flex items-center justify-center">
-                    <Spinner />
-                </div>
-            }
+
         </div>
     )
 }
